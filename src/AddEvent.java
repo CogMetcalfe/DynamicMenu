@@ -10,12 +10,12 @@ public class AddEvent extends ChoiceEvent{
 		int b;
 		int result;
 		System.out.println("Please enter a number: ");
-		a = GodScanner.scanner.nextInt();
+		a = GodScanner.getScan().nextInt();
 		System.out.println("Please enter a numbers: ");
-		b = GodScanner.scanner.nextInt();
+		b = GodScanner.getScan().nextInt();
 		result = a + b;
 		System.out.println(result);
-		GodScanner.scanner.nextLine();
+		GodScanner.getScan().nextLine();
 		
 		return false;
 	}

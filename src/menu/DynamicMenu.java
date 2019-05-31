@@ -21,7 +21,7 @@ public class DynamicMenu {
 		while(running) {
 			
 			printMenu();
-			String userInput = GodScanner.scanner.nextLine();
+			String userInput = GodScanner.getScan().nextLine();
 			for(Choice c:choices) {
 				if(c.eventIfMatch(userInput)) {
 					return;

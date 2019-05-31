@@ -1,24 +1,29 @@
 package menu;
+import java.util.ArrayList;
+
 import event.*;
 
 //Ross
 public class Choice {
 	String name;
-	String[] inputs;
+	ArrayList<String> inputs;
 	ChoiceEvent event;
 	boolean caseSensitive=false;
-
+	
 	
 	public Choice(String name, String input, ChoiceEvent e) {
 		this.name = name;
-		this.inputs = new String[1];
-		this.inputs[0]= input;
+		this.inputs = new ArrayList<String>();
+		this.inputs.add(input);
 		this.event = e;
 	}
 	
 	public Choice(String name, String[] inputs, ChoiceEvent e) {
 		this.name = name;
-		this.inputs = inputs;
+		this.inputs = new ArrayList<String>();
+		for(int i=0;i<inputs.length;i++) {
+			this.inputs.add(inputs[i]);
+		}
 		this.event = e;
 	}
 	
@@ -31,8 +36,8 @@ public class Choice {
 		if(!caseSensitive) {
 			userInput = userInput.toLowerCase();
 		}
-		for(int i=0;i<inputs.length;i++) {
-			String checkStr = inputs[i];
+		for(int i=0;i<inputs.size();i++) {
+			String checkStr = inputs.get(i);
 
 			if(!caseSensitive) {
 				checkStr = checkStr.toLowerCase();
@@ -50,6 +55,13 @@ public class Choice {
 			return event.runEvent();
 		}
 		return false;
+	}
+	
+	public Choice addInput(String additionalInput) {
+		if(!inputs.contains(additionalInput)) {
+			this.inputs.add(additionalInput);
+		}
+		return this;
 	}
 	
 	
